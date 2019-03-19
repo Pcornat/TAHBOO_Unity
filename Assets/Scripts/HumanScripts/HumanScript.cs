@@ -1,32 +1,32 @@
 ﻿using System;
-using HumanScripts;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanScript : MonoBehaviour
+namespace HumanScripts
 {
-	private GameObject Human { get; set; } = null;
-
-	private IntPtr humanInstance;
-
-
-	// Start is called before the first frame update
-	void Start()
+	public class HumanScript : MonoBehaviour
 	{
-		this.Human = GameObject.Find("human");
-		this.humanInstance = HumanDLLInterface.Human_create("config.json");
+		private IntPtr _humanInstance;
+		private List<BodyParts> _bodyPartses;
 
-		//Debug.Log("yes");
-	}
+		// Start is called before the first frame update
+		void Start()
+		{
+			this._humanInstance = HumanDLLInterface.Human_create("config.json");
 
-	// Update is called once per frame
-	void Update()
-	{
-		HumanDLLInterface.update(this.humanInstance);
-	}
+			//Debug.Log("yes");
+		}
 
-	void OnApplicationQuit()
-	{
-		HumanDLLInterface.Human_destroy(this.humanInstance);
-		HumanDLLInterface.DTrack_destroy();
+		// Update is called once per frame
+		void Update()
+		{
+			HumanDLLInterface.update(this._humanInstance);
+		}
+
+		void OnApplicationQuit()
+		{
+			HumanDLLInterface.Human_destroy(this._humanInstance);
+			HumanDLLInterface.DTrack_destroy();
+		}
 	}
 }

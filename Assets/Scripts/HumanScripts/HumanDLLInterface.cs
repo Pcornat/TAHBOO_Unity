@@ -17,10 +17,10 @@ namespace HumanScripts
 		[DllImport("libhumanAnimation.dll", CharSet = CharSet.Unicode)]
 		public static extern void DTrack_destroy();
 
-		[DllImport("libhumanAnimation.dll", CharSet = CharSet.Unicode)]
-		public static extern double* getBodyPartPos(IntPtr ptr, long id);
+		[DllImport("libhumanAnimation.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+		public static extern double[] getBodyPartPos(IntPtr ptr, long id);
 
-		[DllImport("libhumanAnimation.dll", CharSet = CharSet.Unicode)]
-		public static extern double* getBodyPartQuat(IntPtr ptr, long id);
+		[DllImport("libhumanAnimation.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+		public static extern double[] getBodyPartQuat(IntPtr ptr, long id);
 	}
 }
