@@ -19,7 +19,7 @@ namespace HumanScripts
 			this._humanRef = humanRef;
 		}
 
-		public void update()
+		public void Update()
 		{
 			var position = HumanDLLInterface.getBodyPartPos(this._humanRef, this._id);
 			var rotation = HumanDLLInterface.getBodyPartQuat(this._humanRef, this._id);
