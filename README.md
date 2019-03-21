@@ -6,3 +6,8 @@ This is a project used in university, for my study and research work (TER (trava
 
 ## Description
 This is the main part of the project, to better understand see this [part](https://github.com/Pcornat/TAHBOO_HumanAnimation) of the whole project.
+
+# See also
+[DLL part](https://github.com/Pcornat/TAHBOO_HumanAnimation)
+
+[Transcoder](https://github.com/Zicrom08/Tahboo)
