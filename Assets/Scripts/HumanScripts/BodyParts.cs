@@ -9,6 +9,25 @@ namespace HumanScripts
 		private Animator _attachedHuman;
 		private long _id;
 		private IntPtr _humanRef;
+		
+		public long Id
+		{
+			get { return _id; }
+			set { _id = value; }
+		}
+
+		public HumanBodyBones Bone
+		{
+			get { return _bone; }
+			set { _bone = value; }
+		}
+
+		public BodyParts(Animator attachedHuman, IntPtr humanRef)
+		{
+			if (attachedHuman == null) throw new ArgumentNullException(nameof(attachedHuman));
+			_attachedHuman = attachedHuman;
+			_humanRef = humanRef;
+		}
 
 		public BodyParts(HumanBodyBones bone, Animator attachedHuman, long id, IntPtr humanRef)
 		{

@@ -9,7 +9,6 @@ using System.Runtime.InteropServices;
 
 public class testcv : MonoBehaviour
 {
-    Texture2D tex;
     //Lets make our calls from the Plugin
     [DllImport("opencvunity", EntryPoint = "?Initialize@Functions@BackgroundSubtraction@@SAXXZ")]
     private static extern void Initialize();
@@ -19,23 +18,26 @@ public class testcv : MonoBehaviour
 
     [DllImport("opencvunity", EntryPoint = "?freepointer@Functions@BackgroundSubtraction@@SAXXZ")]
     private static extern void freepointer();
-    Material m;
+    
+    private Texture2D _tex;
+    private Material _m;
+    private Renderer _renderer;
+
     void Start()
     {
+        _renderer = this.GetComponent<Renderer>();
         Initialize();
         Debug.Log("done");
-        m = new Material(Shader.Find("Diffuse"));
-       tex = new Texture2D(640, 480, TextureFormat.BGRA32, false);
+        _m = new Material(Shader.Find("Diffuse"));
+       _tex = new Texture2D(640, 480, TextureFormat.BGRA32, false);
     }
 
     void Update()
     {
-        byte[] imgData = ProcessFrame();
-        tex.LoadRawTextureData(imgData);
-        tex.Apply();
-        m.mainTexture = tex;
-        this.GetComponent<Renderer>().material = m;
-        imgData = null;
+        _tex.LoadRawTextureData(ProcessFrame());
+        _tex.Apply();
+        _m.mainTexture = _tex;
+        _renderer.material = _m;
         freepointer();
         GC.Collect();
     }
