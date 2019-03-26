@@ -12,6 +12,7 @@ namespace HumanScripts
 		// Called before everything, used to initialise the object.
 		void Awake()
 		{
+			this._body = new List<BodyParts>();
 			this._humanInstance = HumanDLLInterface.Human_create("config.json");
 			var tabIds = HumanDLLInterface.getIds(this._humanInstance); 
 			for (long i = 0; i < HumanDLLInterface.getNumBodyParts(this._humanInstance); ++i)
