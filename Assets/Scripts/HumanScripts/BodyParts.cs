@@ -7,10 +7,10 @@ namespace HumanScripts
 	{
 		private HumanBodyBones _bone;
 		private Animator _attachedHuman;
-		private long _id;
+		private Int64 _id;
 		private IntPtr _humanRef;
 		
-		public long Id
+		public Int64 Id
 		{
 			get { return _id; }
 			set { _id = value; }
@@ -29,7 +29,7 @@ namespace HumanScripts
 			_humanRef = humanRef;
 		}
 
-		public BodyParts(HumanBodyBones bone, Animator attachedHuman, long id, IntPtr humanRef)
+		public BodyParts(HumanBodyBones bone, Animator attachedHuman, Int64 id, IntPtr humanRef)
 		{
 			if (attachedHuman == null) throw new ArgumentNullException(nameof(attachedHuman));
 			this._bone = bone;
