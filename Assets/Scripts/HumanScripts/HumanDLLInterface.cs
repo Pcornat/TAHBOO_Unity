@@ -20,9 +20,6 @@ namespace HumanScripts
 		public static extern void DTrack_destroy();
 
 		[DllImport(Dllname, CallingConvention = CallingConvention.Cdecl)]
-		public static extern long getNumBodyParts(IntPtr human);
-
-		[DllImport(Dllname, CallingConvention = CallingConvention.Cdecl)]
 		public static extern double[] getBodyPartPos(IntPtr human, long id);
 
 		[DllImport(Dllname, CallingConvention = CallingConvention.Cdecl)]

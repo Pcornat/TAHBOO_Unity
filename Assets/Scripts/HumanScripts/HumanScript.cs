@@ -14,8 +14,8 @@ namespace HumanScripts
 		{
 			this._body = new List<BodyParts>();
 			this._humanInstance = HumanDLLInterface.Human_create("config.json");
-			var tabIds = HumanDLLInterface.getIds(this._humanInstance); 
-			for (long i = 0; i < HumanDLLInterface.getNumBodyParts(this._humanInstance); ++i)
+			var tabIds = HumanDLLInterface.getIds(this._humanInstance);
+			for (long i = 0; i < tabIds.Length; ++i)
 			{
 				this._body.Add(new BodyParts(this.GetComponent<Animator>(), this._humanInstance));
 			}
@@ -23,7 +23,7 @@ namespace HumanScripts
 			//Init of all the bones.
 			this._body[0].Bone = HumanBodyBones.Head;
 			this._body[0].Id = tabIds[0];
-			
+
 			this._body[1].Bone = HumanBodyBones.LeftFoot;
 			this._body[1].Id = tabIds[1];
 
@@ -69,7 +69,7 @@ namespace HumanScripts
 			HumanDLLInterface.update(this._humanInstance);
 			foreach (var parts in this._body)
 			{
-				parts.Update();//Update des bodyParts : mise à jour dans la scène, « normalement » ça marche.
+				parts.Update(); //Update des bodyParts : mise à jour dans la scène, « normalement » ça marche.
 			}
 		}
 
