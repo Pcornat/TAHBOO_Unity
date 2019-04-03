@@ -5,22 +5,12 @@ namespace HumanScripts
 {
 	public class BodyParts : object
 	{
-		private HumanBodyBones _bone;
 		private Animator _attachedHuman;
-		private Int64 _id;
 		private IntPtr _humanRef;
-		
-		public Int64 Id
-		{
-			get { return _id; }
-			set { _id = value; }
-		}
 
-		public HumanBodyBones Bone
-		{
-			get { return _bone; }
-			set { _bone = value; }
-		}
+		public Int64 Id { get; set; }
+
+		public HumanBodyBones Bone { get; set; }
 
 		public BodyParts(Animator attachedHuman, IntPtr humanRef)
 		{
@@ -32,17 +22,17 @@ namespace HumanScripts
 		public BodyParts(HumanBodyBones bone, Animator attachedHuman, Int64 id, IntPtr humanRef)
 		{
 			if (attachedHuman == null) throw new ArgumentNullException(nameof(attachedHuman));
-			this._bone = bone;
+			this.Bone = bone;
 			this._attachedHuman = attachedHuman;
-			this._id = id;
+			this.Id = id;
 			this._humanRef = humanRef;
 		}
 
 		public void Update()
 		{
-			var position = HumanDLLInterface.getBodyPartPos(this._humanRef, this._id);
-			var rotation = HumanDLLInterface.getBodyPartQuat(this._humanRef, this._id);
-			var boneTransform = this._attachedHuman.GetBoneTransform(this._bone);
+			var position = HumanDLLInterface.getBodyPartPos(this._humanRef, this.Id);
+			var rotation = HumanDLLInterface.getBodyPartQuat(this._humanRef, this.Id);
+			var boneTransform = this._attachedHuman.GetBoneTransform(this.Bone);
 
 			boneTransform.rotation = new Quaternion((float) rotation[0], (float) rotation[1], (float) rotation[2], (float) rotation[4]);
 			boneTransform.position = new Vector3((float) position[0], (float) position[1], (float) position[2]);
