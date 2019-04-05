@@ -40,11 +40,10 @@ namespace HumanScripts
 			//Init of all the bones.
 			this._body[0].Bone = HumanBodyBones.Head;
 			this._body[0].Id = result[0];
-            Debug.Log(result[0]);
 
             this._body[1].Bone = HumanBodyBones.LeftFoot;
 			this._body[1].Id = result[1];
-            Debug.Log(result[1]);
+
             this._body[2].Bone = HumanBodyBones.RightFoot;
 			this._body[2].Id = result[2];
 
@@ -94,7 +93,7 @@ namespace HumanScripts
             }
             else
             {
-                Debug.Log("DTRACK C D LA MERT");
+                Debug.Log("Human Update impossible");
             }
 		}
 

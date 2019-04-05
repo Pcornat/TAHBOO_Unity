@@ -39,17 +39,14 @@ namespace HumanScripts
 
 		public void Update()
 		{
-            Debug.Log(this._id);
-            Debug.Log(this._humanRef);
-
             IntPtr position = HumanDLLInterface.getBodyPartPos(this._humanRef, this._id);
             int arrayLength = 3;
             Double[] resultPosition = new Double[arrayLength];
             Marshal.Copy(position, resultPosition, 0, arrayLength);
 
-            Debug.Log("resultPosition 0 "+ resultPosition[0]);
+            /*Debug.Log("resultPosition 0 "+ resultPosition[0]);
             Debug.Log("resultPosition 1 " + resultPosition[1]);
-            Debug.Log("resultPosition 2 " + resultPosition[2]);
+            Debug.Log("resultPosition 2 " + resultPosition[2]);*/
             resultPosition[0] = resultPosition[0] / 1000;
             resultPosition[1] = resultPosition[1] / 1000;
             resultPosition[2] = resultPosition[2] / 1000;
@@ -60,10 +57,10 @@ namespace HumanScripts
             Marshal.Copy(rotation, resultRotation, 0, arrayLength);
 
 
-            Debug.Log("resultRotation 0 " + resultRotation[0]);
+            /*Debug.Log("resultRotation 0 " + resultRotation[0]);
             Debug.Log("resultRotation 1 " + resultRotation[1]);
             Debug.Log("resultRotation 2 " + resultRotation[2]);
-            Debug.Log("resultRotation 3 " + resultRotation[3]);
+            Debug.Log("resultRotation 3 " + resultRotation[3]);*/
 
             var boneTransform = this._attachedHuman.GetBoneTransform(this._bone);
             Quaternion test = new Quaternion((float)resultRotation[0], (float)resultRotation[1], (float)resultRotation[2], (float)resultRotation[3]);
